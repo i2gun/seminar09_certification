@@ -29,13 +29,10 @@ Console.WriteLine("-----------------------------------------------");
 // Задача 66: Задайте значения M и N. Напишите программу,
 //              которая найдёт сумму натуральных элементов в промежутке от M до N.
 
-void NaturalNumbersSumm(int N, int M)
+int NaturalNumbersSumm(int N, int M)
 {   // Введите свое решение ниже
-    int sum = 0;
-    for (int i = N; i <= M; i++) {
-        sum += i;
-    }
-    Console.WriteLine($"{sum}");
+    if (N < M) return N + NaturalNumbersSumm(N + 1, M);
+    return N;
 }
 
 int M = 0;
@@ -51,8 +48,7 @@ while (!int.TryParse(Console.ReadLine(), out N) || N < 1 || N <= M) {
                   " is not greater than the first. Please, enter a natural number: ");
 }
 
-Console.Write($"The summ of numbers between {M} and {N}: ");
-NaturalNumbersSumm(M, N);
+Console.WriteLine($"The summ of numbers between {M} and {N}: {NaturalNumbersSumm(M, N)}");
 Console.WriteLine("-----------------------------------------------");
 
 // ----------------------------------------------------------------------------------------
